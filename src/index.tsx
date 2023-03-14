@@ -1,14 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import NavDrawer from './components/NavDrawer';
 
-const App = () => {
+function App() {
     return (
-        <div>
+        <>
             <NavDrawer />
-        </div>
+        </>
     );
-};
+}
 
-const root = document.getElementById('root');
-ReactDOM.render(<App />, root);
+const rootElement = document.getElementById('root') as Element;
+
+if (rootElement) {
+    const root = createRoot(rootElement);
+    root.render(<App />);
+} else {
+    throw new Error('No root element found');
+    //eslint-disable-next-line no-console
+    console.error('No root element found');
+}
